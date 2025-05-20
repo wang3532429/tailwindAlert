@@ -1,7 +1,7 @@
 # Alert 组件库使用说明
 
 一个基于 Tailwind CSS 的轻量级弹出层组件库，包含 Alert、Modal、Msg 和 Tips 四种组件。
-https://wang3532429.github.io/tailwindAlert/
+[https://wang3532429.github.io/tailwindAlert/](https://wang3532429.github.io/tailwindAlert/demo.html)
 
 ## 安装和引入
 
