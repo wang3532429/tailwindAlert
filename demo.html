@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert 组件库演示</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="alert.min.js"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <!-- 标题 -->
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-gray-900">Alert 组件库演示</h1>
+            <p class="mt-2 text-gray-600">基于 Tailwind CSS 的轻量级弹出层组件库</p>
+        </div>
+
+        <!-- Alert 组件 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm space-y-4">
+            <h2 class="text-xl font-semibold text-gray-900">Alert 提示组件</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="showAlert('success', '操作成功！')" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    <span class="text-green-600">成功提示</span>
+                </button>
+                <button onclick="showAlert('warning', '请注意！')" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    <span class="text-orange-600">警告提示</span>
+                </button>
+                <button onclick="showAlert('error', '操作失败！')" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    <span class="text-red-600">错误提示</span>
+                </button>
+                <button onclick="showAlert('info', '提示信息')" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    <span class="text-blue-600">信息提示</span>
+                </button>
+            </div>
+            <div class="grid grid-cols-4 gap-4">
+                <button onclick="showAlert('success', '右上角提示', { position: 'top-right' })" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    右上角
+                </button>
+                <button onclick="showAlert('success', '左上角提示', { position: 'top-left' })" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    左上角
+                </button>
+                <button onclick="showAlert('success', '右下角提示', { position: 'bottom-right' })" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    右下角
+                </button>
+                <button onclick="showAlert('success', '左下角提示', { position: 'bottom-left' })" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    左下角
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal 组件 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm space-y-4">
+            <h2 class="text-xl font-semibold text-gray-900">Modal 模态框组件</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="showModal({title: '提示', content: '这是一个简单的模态框'})" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    简单模态框
+                </button>
+                <button onclick="showModal({title: '确认', content: '确定要删除这条记录吗？', type: 'warning', buttons: [{text: '取消', type: 'default'}, {text: '确定', type: 'danger', callback: () => msg.success('已删除')}]})" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    确认模态框
+                </button>
+            </div>
+        </div>
+
+        <!-- Msg 组件 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm space-y-4">
+            <h2 class="text-xl font-semibold text-gray-900">Msg 提示组件</h2>
+            <div class="grid grid-cols-4 gap-4">
+                <button onclick="msg.success('操作成功')" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    <span class="text-green-600">成功提示</span>
+                </button>
+                <button onclick="msg.warning('请注意')" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    <span class="text-yellow-600">警告提示</span>
+                </button>
+                <button onclick="msg.error('操作失败')" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    <span class="text-red-600">错误提示</span>
+                </button>
+                <button onclick="msg.text('纯文本提示')" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    纯文本提示
+                </button>
+            </div>
+        </div>
+
+        <!-- Tips 组件 -->
+        <div class="bg-white p-6 rounded-lg shadow-sm space-y-4">
+            <h2 class="text-xl font-semibold text-gray-900">Tips 提示组件</h2>
+            <div class="grid grid-cols-4 gap-4">
+                <button data-tips="Hover 触发提示" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    Hover 提示
+                </button>
+                <button data-tips="Click 触发提示" data-tips-trigger="click" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    Click 提示
+                </button>
+                <button data-tips="深色主题提示" data-tips-dark="true" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    深色提示
+                </button>
+                <button data-tips="带箭头的提示" data-tips-arrow="start" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    箭头提示
+                </button>
+            </div>
+            <div class="grid grid-cols-4 gap-4">
+                <button data-tips="顶部提示" data-tips-placement="top" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    顶部提示
+                </button>
+                <button data-tips="底部提示" data-tips-placement="bottom" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    底部提示
+                </button>
+                <button data-tips="左侧提示" data-tips-placement="left" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    左侧提示
+                </button>
+                <button data-tips="右侧提示" data-tips-placement="right" class="px-4 py-2 bg-white border border-gray-200 rounded-md hover:bg-gray-50 transition-colors duration-150">
+                    右侧提示
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
